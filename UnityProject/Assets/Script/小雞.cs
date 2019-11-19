@@ -10,9 +10,10 @@ public class 小雞 : MonoBehaviour
     [Tooltip("用來確認小雞的死亡狀態,打勾為死亡")]
     public bool Dead = false; //是否死亡
     /// <summary>
-    /// 小雞跳躍控制
+    /// 小雞跳躍設定
     /// </summary>
-    private void Jump()
+    /// <param name="speed"></param>
+    private void Jump(int speed)
     {
 
     }
@@ -20,14 +21,14 @@ public class 小雞 : MonoBehaviour
     /// 
     /// 小雞死亡控制
     /// </summary>
-    private void Death()
+    public void Death()
     {
 
     }
     /// <summary>
     /// 小雞通過水管
     /// </summary>
-    private void Through()
+    public void Passpipe()
     {
 
     }

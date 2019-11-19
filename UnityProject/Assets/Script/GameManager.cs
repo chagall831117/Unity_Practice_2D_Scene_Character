@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// 控制遊戲分數增加
     /// </summary>
-    private void Plus()
+    public void Plus()
     {
 
     }
@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// 最高分數設定
     /// </summary>
-    private void Bestssetting()
+    public void BestScore()
     {
 
     }
@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// 遊戲結束判定
     /// </summary>
-    private void GameOver()
+    public void GameOver()
     {
 
     }

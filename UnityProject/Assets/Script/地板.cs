@@ -8,9 +8,10 @@ public class 地板 : MonoBehaviour
     public float speed = 2.5f;//移動速度
 
     /// <summary>
-    /// 控制地板的移動
+    /// 控制地板的移動速度
     /// </summary>
-    private void Move()
+    /// <param name="speed"></param>
+    public void Move(float movespeed)
     {
 
     }

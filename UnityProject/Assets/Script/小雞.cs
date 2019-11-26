@@ -1,7 +1,12 @@
 ﻿using UnityEngine;
 
+
 public class 小雞 : MonoBehaviour
 {
+    //宣告非靜態API小蝴蝶
+    public Transform Butterfly;
+
+    public Rigidbody2D RBfly;
     [Header("小雞跳躍的速度")]
     [Tooltip("用來調整小雞跳躍的速度")]
     [Range(0.1f,5)]
@@ -13,9 +18,12 @@ public class 小雞 : MonoBehaviour
     /// 小雞跳躍設定
     /// </summary>
     /// <param name="speed"></param>
-    private void Jump(int speed)
+    private void Jump(float speed)
     {
-
+        if (Input.GetKeyDown("w"))
+            {
+            RBfly.AddForce(transform.up * 4 * speed, ForceMode2D.Impulse);
+            }
     }
     /// <summary>
     /// 
@@ -31,5 +39,9 @@ public class 小雞 : MonoBehaviour
     public void Passpipe()
     {
 
+    }
+    private void Update()
+    {
+        Jump(JumpSpeed);
     }
 }

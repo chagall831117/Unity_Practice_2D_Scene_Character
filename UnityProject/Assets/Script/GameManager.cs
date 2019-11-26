@@ -13,6 +13,12 @@ public class GameManager : MonoBehaviour
     [Header("水管")]
     public GameObject pipe;//GameObject 可以存放預置物 或是場景物件
 
+    [Header("地板")]
+    public Transform floor;//GameObject 可以存放預置物 或是場景物件
+
+    [Header("水管生成時間")]
+    [Range(1, 50f)]
+    public float Spawn = 1f;
     /// <summary>
     /// 水管生成
     /// </summary>
@@ -22,6 +28,16 @@ public class GameManager : MonoBehaviour
         //也可以縮寫為Instantiate(pipe)
         //因為有繼承object這個類別
         Object.Instantiate(pipe);
+    }
+
+    public void VQSpawnfloor()
+    {
+        //Vector3 三維向量 x,y,z
+        Vector3 pos = new Vector3(35.1f, -4.6f, 0);
+        //Quaternion 四元數 x,y,z,w
+        Quaternion rot = new Quaternion(0, 0, 0, 0);
+        //Object.Instantiate(Objcet,Vector3,Quaternion) 三個控制參數測試
+        Object.Instantiate(floor, pos, rot);
     }
     /// <summary>
     /// 有三圍向量以及四元數的水管生成
@@ -65,7 +81,8 @@ public class GameManager : MonoBehaviour
         //在開始時執行一次水管生成
         //SpawnPipe();
         //VQSpawnPipe();
-        InvokeRepeating("VQSpawnPipe", 0, 0.1f);
+        InvokeRepeating("VQSpawnPipe", 0, Spawn);
         //延遲重複呼叫(方法名稱,開始時間,頻率)
+        InvokeRepeating("VQSpawnfloor", 0, 20f);
     }
 }

@@ -2,9 +2,21 @@
 
 public class LearnAPI : MonoBehaviour
 {
+    public Transform Chiken;
+    public Transform Camera;
+    public SpriteRenderer Butterfly;
+
     private void Start()
     {
-        print("輸出");
+        //非靜態成員的取得
+
+        print("小雞位置"+Chiken.position);
+        print("鏡頭位置"+Camera.position);
+
+        //非靜態成員的位置改變
+        //Chiken.position = new Vector3(-3, 0, 0);
+        //圖片翻轉X軸
+        //Butterfly.flipX = true;
 
 
         Debug.Log("一般!");
@@ -28,6 +40,8 @@ public class LearnAPI : MonoBehaviour
     }
     private void Update()
     {
+        //控制小雞的尺寸 以每幀1,1的速度長大
+        //Chiken.localScale = Chiken.localScale+ new  Vector3(1, 1, 0);
         //紀錄每一幀鍵盤所按下的按鍵
         print(Input.inputString);
 

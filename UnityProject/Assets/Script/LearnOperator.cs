@@ -16,6 +16,20 @@ public class LearnOperator : MonoBehaviour
         print(6 / 2*(2 + 1));
         print(a++);
         print(++a);
+
+        // 並且 && 若有一邊是False則傳回False
+        print(true&&true);
+        print(true&&false);
+        print(false&&true);
+        print(false&&false);
+
+        //或者 || 若有一邊是True則傳回True
+        print(true||true);
+        print(false||true);
+        print(true||false);
+        print(false||false);
+
+        //
     }
 
     // Update is called once per frame

@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour
     [Tooltip("用來顯示最高分數")]
     public int Best = 100; //最高分數
 
+    [Header("透明水管")]
+    public GameObject SteathPipe;//GameObject 存放透明水管計分用
+
     [Header("水管")]
     public GameObject pipe;//GameObject 可以存放預置物 或是場景物件
 

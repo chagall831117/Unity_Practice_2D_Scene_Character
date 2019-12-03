@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
     [Header("地板")]
     public Transform floor;//GameObject 可以存放預置物 或是場景物件
 
+    public GameObject UI; //宣告存放介面群組
+
     [Header("水管生成時間")]
     [Range(1, 50f)]
     public float Spawn = 1f;
@@ -77,7 +79,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void GameOver()
     {
-
+        UI.SetActive(true);
     }
     public void Start()
     {

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -6,9 +7,9 @@ public class GameManager : MonoBehaviour
     [Tooltip("用來調整目前分數")]
     public int Score = 0;//目前分數
 
-    [Header("目前分數")]
+    [Header("最高分數")]
     [Tooltip("用來顯示最高分數")]
-    public int Best = 100; //最高分數
+    public int Best = 0; //最高分數
 
     [Header("透明水管")]
     public GameObject SteathPipe;//GameObject 存放透明水管計分用
@@ -17,9 +18,13 @@ public class GameManager : MonoBehaviour
     public GameObject pipe;//GameObject 可以存放預置物 或是場景物件
 
     [Header("地板")]
-    public Transform floor;//GameObject 可以存放預置物 或是場景物件
+    public GameObject floor;//GameObject 可以存放預置物 或是場景物件
 
     public GameObject UI; //宣告存放介面群組
+
+    public Text TextScore;//宣告存放分數介面
+
+    public Text TextBest;//宣告存放最高分數介面
 
     [Header("水管生成時間")]
     [Range(1, 50f)]
@@ -34,7 +39,9 @@ public class GameManager : MonoBehaviour
         //因為有繼承object這個類別
         Object.Instantiate(pipe);
     }
-
+    /// <summary>
+    /// 有三圍向量以及四元數的地板生成
+    /// </summary>
     public void VQSpawnfloor()
     {
         //Vector3 三維向量 x,y,z
@@ -61,17 +68,25 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// 控制遊戲分數增加
     /// </summary>
-    public void Plus()
+    public void Plus(int Add)
     {
-
+        Score += Add;
+        //改變Score文字介面
+        TextScore.text = Score + ""; //使用空字串將int形式的Score轉成string
+        //TextScore.text = Score.ToString();//使用Tostring()方法將Score轉成string 
     }
-
     /// <summary>
     /// 最高分數設定
     /// </summary>
     public void BestScore()
-    {
-
+    {            
+        //改變Best文字介面
+        TextBest.text = Best + "";//使用空字串將int形式的Best轉成string
+        if (Score>Best)
+        {
+            Best = Score;
+            PlayerPrefs.SetInt("BestScore", Score);
+        }
     }
 
     /// <summary>
@@ -79,15 +94,23 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void GameOver()
     {
+        //開啟UI介面
         UI.SetActive(true);
+        //將水管以及地板的速度歸零
+        地板.speed = 0f;
     }
     public void Start()
     {
+        //在遊戲開始
+        Best = PlayerPrefs.GetInt("BestScore");
         //在開始時執行一次水管生成
-        //SpawnPipe();
         //VQSpawnPipe();
         InvokeRepeating("VQSpawnPipe", 0, Spawn);
         //延遲重複呼叫(方法名稱,開始時間,頻率)
         InvokeRepeating("VQSpawnfloor", 0, 20f);
+    }
+    private void Update()
+    {
+        BestScore();
     }
 }

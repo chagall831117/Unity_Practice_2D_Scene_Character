@@ -2,10 +2,11 @@
 
 public class 地板 : MonoBehaviour
 {
+    //靜態此類別共用 且必為隱藏
     [Header("地板移動速度")]
     [Tooltip("用來調整地板移動的速度")]
     [Range(0.1f,20)]
-    public float speed = 2.5f;//移動速度
+    public static float speed = 3f;//移動速度
     
     /// <summary>
     /// 放置地板物件

@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
+
 
 
 public class 小雞 : MonoBehaviour
@@ -13,6 +15,10 @@ public class 小雞 : MonoBehaviour
     public Rigidbody2D RBfly;
     //宣告存放GM
     public GameManager GM;
+    //宣告存放音源
+    public AudioSource AUDBUF;
+    //宣告存放音檔
+    public AudioClip SoundJump, SoundAdd, SoundDead;
 
     [Header("小雞跳躍的速度")]
     [Tooltip("用來調整小雞跳躍的速度")]
@@ -37,7 +43,8 @@ public class 小雞 : MonoBehaviour
             {
             RBfly.Sleep(); //進入睡眠
             RBfly.AddForce(new Vector2(0,speed), ForceMode2D.Impulse); //給予推力
-            RBfly.SetRotation(30); //給予旋轉角度
+            RBfly.SetRotation(30); //給予旋轉角度\
+            AUDBUF.PlayOneShot(SoundAdd);
             }
         //抓W和滑鼠左鍵為啟動
         if (Input.GetKeyDown("w")||Input.GetKeyDown(KeyCode.Mouse0))
@@ -58,16 +65,21 @@ public class 小雞 : MonoBehaviour
     /// </summary>
     public void Death()
     {
+        if (Dead) return;
         Dead = true;
         //控制GM的Gameover控制項
         GM.GameOver();
+        AUDBUF.PlayOneShot(SoundDead);
     }
     /// <summary>
     /// 小雞通過水管
     /// </summary>
     public void Passpipe()
     {
-
+        if (Dead) return;
+        GM.Plus(1);
+        print("加分");
+        AUDBUF.PlayOneShot(SoundAdd);
     }
     private void Update()
     {
@@ -82,7 +94,7 @@ public class 小雞 : MonoBehaviour
     {
         if (collision.gameObject.name=="透明水管")
         {
-            //GOScore.
+            Passpipe();
         }
 
         else Death();

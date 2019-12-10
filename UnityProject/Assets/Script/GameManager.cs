@@ -22,13 +22,46 @@ public class GameManager : MonoBehaviour
 
     public GameObject UI; //宣告存放介面群組
 
+    public GameObject YiYuan;//宣告存放水車義勇
+
+    public GameObject YiRun;//宣告存放跑步義勇
+
+    public 水車 Water;//宣告存放水車腳本
+
+    public 跑步 Run;//宣告存放跑步腳本
+
     public Text TextScore;//宣告存放分數介面
 
     public Text TextBest;//宣告存放最高分數介面
 
+
+
     [Header("水管生成時間")]
     [Range(1, 50f)]
     public float Spawn = 1f;
+
+    public void RandomCall()
+    {
+        print("Randompring"+Random.Range(0, 11)); //0,11的Range生成0~10的int
+        if (Random.Range(0,11)>5)
+        {
+            CallYi();
+        }
+    }
+
+    public void CallYi()
+    {   
+        YiYuan.SetActive(true);
+        Water.Fly();
+        YiRun.SetActive(false);
+        Invoke("BackYi", 2f);
+    }
+    public void BackYi()
+    {
+        YiYuan.SetActive(false);
+        YiRun.SetActive(true);
+        Run.Push();
+    }
     /// <summary>
     /// 水管生成
     /// </summary>
@@ -108,6 +141,9 @@ public class GameManager : MonoBehaviour
         InvokeRepeating("VQSpawnPipe", 0, Spawn);
         //延遲重複呼叫(方法名稱,開始時間,頻率)
         InvokeRepeating("VQSpawnfloor", 0, 20f);
+
+        //InvokeRepeating("CallYi", Spawn/2, Spawn);
+        InvokeRepeating("RandomCall", Spawn / 2, Spawn);
     }
     private void Update()
     {

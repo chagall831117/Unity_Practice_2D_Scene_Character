@@ -96,6 +96,10 @@ public class 小雞 : MonoBehaviour
         {
             Passpipe();
         }
+        else if (collision.gameObject.name == "富岡義勇PIXEL水車")
+        {
+            Passpipe();
+        }
 
         else Death();
     }

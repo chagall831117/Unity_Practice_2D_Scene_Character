@@ -15,14 +15,6 @@ public class 水車 : MonoBehaviour
         YiYung.gravityScale = 1;
         YiYung.AddForce(new Vector2(1, 10), ForceMode2D.Impulse);
      }
-    public void FlyBack()
-    {
-        YiTF.position = new Vector3(-1.8f, -3.3f);
-        YiYung.Sleep();
-        YiYung.gravityScale = 0;
-        //YiYung.Sleep();
-        //YiYung.AddForce(new Vector2(-3f, 0), ForceMode2D.Impulse);
-    }
     void Start()
     {
         

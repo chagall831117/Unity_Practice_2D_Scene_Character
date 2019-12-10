@@ -2,6 +2,18 @@
 
 public class 地板 : MonoBehaviour
 {
+    //在所有相機都看不到的情況下
+    private void OnBecameInvisible()
+    {
+        print("完蛋了，水管被超級摧毀了");
+        Destroy(gameObject, 2);
+    }
+    //在所有相機都看到的情況下
+    private void OnBecameVisible()
+    {
+        //print("看到了");
+    }
+
     //靜態此類別共用 且必為隱藏
     [Header("地板移動速度")]
     [Tooltip("用來調整地板移動的速度")]

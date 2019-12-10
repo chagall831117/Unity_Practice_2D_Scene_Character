@@ -20,6 +20,8 @@ public class 小雞 : MonoBehaviour
     //宣告存放音檔
     public AudioClip SoundJump, SoundAdd, SoundDead;
 
+    public GameObject Text1, Text2;
+
     [Header("小雞跳躍的速度")]
     [Tooltip("用來調整小雞跳躍的速度")]
     [Range(5f,20f)]
@@ -27,7 +29,7 @@ public class 小雞 : MonoBehaviour
 
     [Header("小雞是否死亡")]
     [Tooltip("用來確認小雞的死亡狀態,打勾為死亡")]
-    public bool Dead = false; //是否死亡
+    public static bool Dead = false; //是否死亡
 
     /// <summary>
     /// 小雞跳躍設定
@@ -50,8 +52,10 @@ public class 小雞 : MonoBehaviour
         if (Input.GetKeyDown("w")||Input.GetKeyDown(KeyCode.Mouse0))
         {
             //若有抓到則出現此訊息
-            print("Pressed Mouse 0");
+            //print("Pressed Mouse 0");
             //物件分數.遊戲管理器 啟動
+            Text1.SetActive(false);
+            Text2.SetActive(false);
             GOScore.SetActive(true);
             GOGameManager.SetActive(true);
             //改變蝴蝶的重力為2
@@ -78,7 +82,7 @@ public class 小雞 : MonoBehaviour
     {
         if (Dead) return;
         GM.Plus(1);
-        print("加分");
+        //print("加分");
         AUDBUF.PlayOneShot(SoundAdd);
     }
     private void Update()
@@ -96,11 +100,10 @@ public class 小雞 : MonoBehaviour
         {
             Passpipe();
         }
-        else if (collision.gameObject.name == "富岡義勇PIXEL水車")
-        {
-            Passpipe();
-        }
-
         else Death();
+    }
+    private void Start()
+    {
+        Screen.SetResolution(720, 1280, false);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -42,7 +43,7 @@ public class GameManager : MonoBehaviour
 
     public void RandomCall()
     {
-        print("Randompring"+Random.Range(0, 11)); //0,11的Range生成0~10的int
+        //print("Randompring"+Random.Range(0, 11)); //0,11的Range生成0~10的int
         if (Random.Range(0,11)>5)
         {
             CallYi();
@@ -50,7 +51,8 @@ public class GameManager : MonoBehaviour
     }
 
     public void CallYi()
-    {   
+    {
+        if (小雞.Dead == true) return;
         YiYuan.SetActive(true);
         Water.Fly();
         YiRun.SetActive(false);
@@ -132,6 +134,11 @@ public class GameManager : MonoBehaviour
         //將水管以及地板的速度歸零
         地板.speed = 0f;
     }
+    public void PlusSpeed()
+    {
+        if (小雞.Dead == true) return;
+        地板.speed += 0.1f;
+    }
     public void Start()
     {
         //在遊戲開始
@@ -144,9 +151,27 @@ public class GameManager : MonoBehaviour
 
         //InvokeRepeating("CallYi", Spawn/2, Spawn);
         InvokeRepeating("RandomCall", Spawn / 2, Spawn);
+        InvokeRepeating("PlusSpeed", Spawn / 2, Spawn);
     }
     private void Update()
     {
         BestScore();
+    }
+    /// <summary>
+    /// 離開遊戲
+    /// </summary>
+    public void Exit()
+    {
+        Application.Quit();
+    }
+    /// <summary>
+    /// 重新開始遊戲
+    /// </summary>
+    public void Replay()
+    {
+        // Application.LoadLevel("遊戲場景");//舊版
+        SceneManager.LoadScene("小鴨子");//新版寫法
+        地板.speed = 3f;
+        小雞.Dead = false;
     }
 }

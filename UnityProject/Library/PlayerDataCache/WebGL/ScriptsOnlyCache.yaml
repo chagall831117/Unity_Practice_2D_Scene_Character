@@ -605,4 +605,4 @@ ScriptsOnlyBuild:
   platform: 20
   scenePathNames:
   - "Assets/\u5C0F\u9D28\u5B50.unity"
-  playerPath: D:/Unity_Practice_2D_Scene_Character/Web
+  playerPath: D:/Unity_Practice_2D_Scene_Character/WebGL

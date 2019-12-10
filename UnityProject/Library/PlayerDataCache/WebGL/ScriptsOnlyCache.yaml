@@ -15,7 +15,6 @@ ScriptsOnlyBuild:
     - "\u8DD1\u6B65"
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
-    - UnityEditor.TestTools.TestRunner.TestListCacheData
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
@@ -63,43 +62,43 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9674}
+      Script: {instanceID: 9676}
     - Class: 114
-      Script: {instanceID: 9680}
+      Script: {instanceID: 9682}
     - Class: 114
-      Script: {instanceID: 9824}
+      Script: {instanceID: 9826}
     - Class: 114
-      Script: {instanceID: 9864}
+      Script: {instanceID: 9866}
     - Class: 114
-      Script: {instanceID: 10154}
+      Script: {instanceID: 10156}
     - Class: 114
-      Script: {instanceID: 10168}
+      Script: {instanceID: 10170}
     - Class: 114
-      Script: {instanceID: 10234}
+      Script: {instanceID: 10236}
     - Class: 114
-      Script: {instanceID: 10254}
+      Script: {instanceID: 10256}
     - Class: 114
-      Script: {instanceID: 10286}
+      Script: {instanceID: 10288}
     - Class: 114
-      Script: {instanceID: 10380}
+      Script: {instanceID: 10382}
     - Class: 114
-      Script: {instanceID: 10402}
+      Script: {instanceID: 10404}
     - Class: 114
-      Script: {instanceID: 10576}
+      Script: {instanceID: 10578}
     - Class: 114
-      Script: {instanceID: 10620}
+      Script: {instanceID: 10622}
     - Class: 114
-      Script: {instanceID: 10644}
+      Script: {instanceID: 10646}
     - Class: 114
-      Script: {instanceID: 10780}
+      Script: {instanceID: 10782}
     - Class: 114
-      Script: {instanceID: 10898}
+      Script: {instanceID: 10900}
     - Class: 114
-      Script: {instanceID: 10918}
+      Script: {instanceID: 10920}
     - Class: 114
-      Script: {instanceID: 11026}
+      Script: {instanceID: 11028}
     - Class: 114
-      Script: {instanceID: 11366}
+      Script: {instanceID: 11368}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -606,4 +605,4 @@ ScriptsOnlyBuild:
   platform: 20
   scenePathNames:
   - "Assets/\u5C0F\u9D28\u5B50.unity"
-  playerPath: D:/Unity_Practice_2D_Scene_Character/WebGL
+  playerPath: D:/Unity_Practice_2D_Scene_Character/Web
